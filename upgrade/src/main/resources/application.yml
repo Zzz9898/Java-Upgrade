@@ -3,5 +3,9 @@ spring:
     url: jdbc:mysql://wxf.zcoder.top:3306/demo
     username: root
     password: mysql57
+  redis:
+    host: 47.107.61.107
+    password: redis
+    database: 2
 server:
   port: 13000
