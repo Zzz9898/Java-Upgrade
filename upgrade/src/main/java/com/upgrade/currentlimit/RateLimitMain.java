@@ -19,8 +19,20 @@ public class RateLimitMain {
     }
 
     @GetMapping("/reteLimit/time")
-    @RateLimiter(time = 10, count = 5)
+    @RateLimiter(time = 10, count = 2)
     public String rateLimitTime() {
+        return "hello>>>" + new Date();
+    }
+
+    @GetMapping("/reteLimitSlidingWindow/ip")
+    @RateLimiter(time = 10, count = 2, limitType = LimitType.IP, limitHandleType = LimitHandleType.SLIDING_WINDOW)
+    public String rateLimitSlidingWindowIp() {
+        return "hello>>>" + new Date();
+    }
+
+    @GetMapping("/reteLimitSlidingWindow/time")
+    @RateLimiter(time = 10, count = 2, limitHandleType = LimitHandleType.SLIDING_WINDOW)
+    public String rateLimitSlidingWindowTime() {
         return "hello>>>" + new Date();
     }
 }

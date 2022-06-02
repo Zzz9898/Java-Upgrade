@@ -13,11 +13,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RateLimiter {
 
-    String key() default "rete_limit";
+    String key() default "rate_limit";
 
     int time() default 60;
 
     int count() default 100;
 
     LimitType limitType() default LimitType.DEFAULT;
+
+    LimitHandleType limitHandleType() default LimitHandleType.SIMPLE;
 }

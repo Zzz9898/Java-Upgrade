@@ -14,9 +14,17 @@ import org.springframework.stereotype.Component;
 public class LuaScriptContainer {
 
     @Bean
-    public DefaultRedisScript<Long> limitScript() {
+    public static DefaultRedisScript<Long> limitScript() {
         DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
         redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("lua/limit.lua")));
+        redisScript.setResultType(Long.class);
+        return redisScript;
+    }
+
+    @Bean
+    public static DefaultRedisScript<Long> limitSlidingWindowScript(){
+        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
+        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("lua/limit_sliding_window.lua")));
         redisScript.setResultType(Long.class);
         return redisScript;
     }
