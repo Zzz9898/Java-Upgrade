@@ -6,4 +6,6 @@ package com.upgrade.transaction.service;
  */
 public interface BusinessService {
     void optimisticLock(Integer dataId) throws Exception;
+
+    void asyncMore();
 }

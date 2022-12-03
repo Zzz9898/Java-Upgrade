@@ -7,6 +7,7 @@ import com.upgrade.transaction.service.BusinessService;
 import com.upgrade.transaction.service.DataService;
 import com.upgrade.transaction.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +32,19 @@ public class BusinessServiceImpl implements BusinessService {
         Record record = buildRecord(data);
         recordService.getBaseMapper().insert(record);
         recordService.updateByOptimisticLock(data, record);
+    }
+
+    @Async
+    @Override
+    public void asyncMore(){
+        try {
+            System.out.println("asyncMore----------------begin");
+            System.out.println(Thread.currentThread().getName());
+            Thread.sleep(5000);
+            System.out.println("asyncMore----------------down");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private Record buildRecord(Data data) {

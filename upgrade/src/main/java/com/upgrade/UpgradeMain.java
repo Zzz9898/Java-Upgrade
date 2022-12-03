@@ -3,6 +3,7 @@ package com.upgrade;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @Author zhangjiaw
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.upgrade.**.mapper")
+@EnableAsync
 public class UpgradeMain {
     public static void main(String[] args) {
         SpringApplication.run(UpgradeMain.class);
